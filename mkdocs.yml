@@ -3,4 +3,5 @@ nav:
   - Home: index.md
   - Modelli: modelli.md
   - Architettura: architettura.md
+  - Avvio del progetto: installazione.md
 theme: readthedocs
