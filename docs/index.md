@@ -1,17 +1,29 @@
-# Welcome to MkDocs
+# Documentazione Cinemille
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Panoramica del Progetto
 
-## Commands
+Il progetto è stato realizzato con:
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+- **Backend**: Spring Boot, Spring Security, JPA/Hibernate
+- **Frontend**: Angular 19 + Angular Material
+- **Database**: PostgreSQL
+- **VCS**: Git
+- **IDE**: IntelliJ
 
-## Project layout
+L'applicazione permette visualizzare una lista completa delle programmazioni, oppure solo la lista dei film in programmazione nella settimana attuale,  in base al ruolo dell'utente/servizio.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Struttura del Progetto
+
+Il progetto è organizzato con una struttura Maven:
+
+```
+cinemille/
+├── backend/         # Spring Boot
+└── frontend/        # Angular
+```
+Per una spiegazione più dettagliata, vedere la sezione "Architettura"
+
+## Funzionalità Principali
+
+- **Autenticazione**: Sistema di autenticazione basato su JWT
+- **Lista Film**: Storico completo delle programmazioni dei film nelle varie sale

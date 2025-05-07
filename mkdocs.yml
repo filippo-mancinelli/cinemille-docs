@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: Cinemille
+nav:
+  - Home: index.md
+  - Modelli: modelli.md
+  - Architettura: architettura.md
+theme: readthedocs
