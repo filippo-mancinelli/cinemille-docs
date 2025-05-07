@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Architettura - Cinemille</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architettura";
+        var mkdocs_page_input_path = "architettura.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Cinemille
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modelli/">Modelli</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Architettura</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#backend">Backend</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#package-principali">Package principali</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dipendenze">Dipendenze</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#frontend-angular-19">Frontend (Angular 19)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#package-principali_1">Package Principali</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dipendenze_1">Dipendenze</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flusso-di-autenticazione">Flusso di Autenticazione</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#processo-di-login">Processo di Login</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifica-del-token">Verifica del Token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#diagramma-di-sequenza-di-autenticazione">Diagramma di Sequenza di Autenticazione</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accesso-alle-api-di-programmazione">Accesso alle API di Programmazione</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-endpoint-per-utenti-autenticati-richiede-jwt">1. Endpoint per utenti autenticati (richiede JWT)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-endpoint-pubblico-non-richiede-autenticazione">2. Endpoint pubblico (non richiede autenticazione)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installazione/">Avvio del progetto</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Cinemille</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Architettura</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architettura-del-sistema">Architettura del Sistema</h1>
+<h3 id="backend">Backend</h3>
+<p>Il backend è stato strutturato seguendo le indicazioni standard del pattern MVC</p>
+<h4 id="package-principali">Package principali</h4>
+<ul>
+<li><strong>Model</strong>: Rappresentano le entità del dominio, mappate direttamente sul DB tramite l'ORM di Hibernate</li>
+<li><strong>Repository</strong>: Si interfacciano con il Database, estendono JpaRepository in modo da offrire operazioni standard di CRUD già implementate sulle entità</li>
+<li><strong>Controller</strong>: Gestiscono le richieste HTTP e definiscono gli endpoint dell'API REST</li>
+<li><strong>Service</strong>: Implementano la logica di business</li>
+<li><strong>Config</strong>: Configurazioni di base per CSRF, CORS, Middleware per Logging e controllo JWT, Esclusione URL da autenticazione obbligatoria</li>
+</ul>
+<h4 id="dipendenze">Dipendenze</h4>
+<p>Definite nel pom.xml del backedn</p>
+<ul>
+<li>Spring Boot Web</li>
+<li>Spring Data JPA</li>
+<li>Spring Security</li>
+<li>JWT</li>
+<li>PostgreSQL</li>
+</ul>
+<h3 id="frontend-angular-19">Frontend (Angular 19)</h3>
+<ul>
+<li>Comunicazione con il backend tramite chiamate http all'API Rest</li>
+<li>Gestione dello stato dell'applicazione, principalmente sullo stato di autenticazione dell'utente</li>
+<li>Gestione route guard in base allo stato di autenticazione dell'utente</li>
+</ul>
+<h4 id="package-principali_1">Package Principali</h4>
+<ul>
+<li><strong>Core</strong>: Contiene logica fondamentale, servizi e guard</li>
+<li>
+<ul>
+<li><strong>Servizi</strong>: Gestiscono la logica di business e la comunicazione con il backend</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong>Guard</strong>: Proteggono l'accesso alle funzionalità in base all'autenticazione</li>
+</ul>
+</li>
+<li><strong>Shared</strong>: Contiene componenti comuni a molteplici pagine/componenti. In questo caso viene usato per la Navbar</li>
+<li><strong>Features</strong>: Le funzionalità sono organizzate in features. Ciascuna feature può contenere i componenti delle pagine (Film e Login in questo caso), e un ulteriore cartella con dentro componenti minori che possono essere utilizzati in altre pagine/componenti</li>
+</ul>
+<h4 id="dipendenze_1">Dipendenze</h4>
+<ul>
+<li>Angular Core e Common</li>
+<li>Angular Material</li>
+<li>RxJS</li>
+<li>Angular Router</li>
+</ul>
+<h2 id="flusso-di-autenticazione">Flusso di Autenticazione</h2>
+<p>L'autenticazione è gestita in un approccio stateless tramite token JWT (JSON Web Token).</p>
+<h3 id="processo-di-login">Processo di Login</h3>
+<ol>
+<li>L'utente invia credenziali (username e password) al backend</li>
+<li>Il backend verifica le credenziali contro il database</li>
+<li>Se valide, genera un token JWT firmato con una chiave segreta</li>
+<li>Il token viene restituito al client</li>
+<li>Il client memorizza il token nel localStorage</li>
+<li>Per le richieste successive, il token viene inviato nell'header Authorization</li>
+</ol>
+<h3 id="verifica-del-token">Verifica del Token</h3>
+<ol>
+<li>Per ogni richiesta autenticata, il client include il token JWT nell'header</li>
+<li>Il backend cattura e verifica l'autenticità del token con la classe JWTFilter usando la chiave segreta</li>
+<li>Se valido, estrae l'identità dell'utente e i ruoli</li>
+<li>La richiesta viene processata in base ai permessi dell'utente e/o endpoint chiamato</li>
+</ol>
+<h3 id="diagramma-di-sequenza-di-autenticazione">Diagramma di Sequenza di Autenticazione</h3>
+<p><img alt="flusso-login" src="../flusso-login.png" /></p>
+<h2 id="accesso-alle-api-di-programmazione">Accesso alle API di Programmazione</h2>
+<p>Il sistema offre due endpoint per accedere ai dati di programmazione:</p>
+<h3 id="1-endpoint-per-utenti-autenticati-richiede-jwt">1. Endpoint per utenti autenticati (richiede JWT)</h3>
+<pre><code>GET /api/programmazione
+</code></pre>
+<p>Questo endpoint è protetto tramite JWT e permette di visualizzare lo storico completo delle programmazioni, con possibilità di filtraggio per data.</p>
+<p><img alt="programmazione-autenticato" src="../programmazione-autenticato.png" /></p>
+<h3 id="2-endpoint-pubblico-non-richiede-autenticazione">2. Endpoint pubblico (non richiede autenticazione)</h3>
+<pre><code>GET /api/programmazione/settimana-corrente
+</code></pre>
+<p>Questo endpoint è accessibile pubblicamente e restituisce solo le programmazioni della settimana corrente. È pensato per sistemi di visualizzazione esterni o per utenti non registrati.</p>
+<p><img alt="programmazione-esterno" src="../programmazione-esterno.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../modelli/" class="btn btn-neutral float-left" title="Modelli"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../installazione/" class="btn btn-neutral float-right" title="Avvio del progetto">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../modelli/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../installazione/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
